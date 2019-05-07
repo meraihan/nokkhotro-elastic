@@ -16,7 +16,8 @@ public class ServiceProviderRowMapper implements RowMapper<ServiceProvider> {
         serviceProvider.setPhone(rs.getString("phone"));
         serviceProvider.setContactPerson(rs.getString("contact_person"));
         serviceProvider.setEmail(rs.getString("email"));
-        serviceProvider.setDistrictId(rs.getString("division_id"));
+        serviceProvider.setDivisionId(rs.getString("division_id"));
+        serviceProvider.setDistrictId(rs.getString("district_id"));
         serviceProvider.setUpazillaId(rs.getString("upazilla_id"));
         serviceProvider.setMunicipalityId(rs.getString("municipilities_id"));
         serviceProvider.setAddress(rs.getString("address"));
