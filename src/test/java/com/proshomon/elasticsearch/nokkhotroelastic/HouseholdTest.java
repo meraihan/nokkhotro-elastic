@@ -1,7 +1,7 @@
 package com.proshomon.elasticsearch.nokkhotroelastic;
 
-import com.proshomon.elasticsearch.nokkhotroelastic.model.HouseholdNew;
-import com.proshomon.elasticsearch.nokkhotroelastic.model_old.Household;
+import com.proshomon.elasticsearch.nokkhotroelastic.model.model_new.HouseholdNew;
+import com.proshomon.elasticsearch.nokkhotroelastic.model.model_old.Household;
 import com.proshomon.elasticsearch.nokkhotroelastic.repository.HouseholdRepository;
 import com.proshomon.elasticsearch.nokkhotroelastic.utils.Helper;
 import lombok.extern.slf4j.Slf4j;

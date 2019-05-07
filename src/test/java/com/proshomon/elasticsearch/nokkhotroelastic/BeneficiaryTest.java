@@ -1,10 +1,10 @@
 package com.proshomon.elasticsearch.nokkhotroelastic;
 
-import com.proshomon.elasticsearch.nokkhotroelastic.ElasticModel.ElasticSearch;
-import com.proshomon.elasticsearch.nokkhotroelastic.model.BeneficiaryNew;
-import com.proshomon.elasticsearch.nokkhotroelastic.model.enums.DisabilityType;
-import com.proshomon.elasticsearch.nokkhotroelastic.model.enums.Relationship;
-import com.proshomon.elasticsearch.nokkhotroelastic.model_old.Beneficiary;
+import com.proshomon.elasticsearch.nokkhotroelastic.model.ElasticModel.ElasticSearch;
+import com.proshomon.elasticsearch.nokkhotroelastic.model.model_new.BeneficiaryNew;
+import com.proshomon.elasticsearch.nokkhotroelastic.model.model_new.enums.DisabilityType;
+import com.proshomon.elasticsearch.nokkhotroelastic.model.model_new.enums.Relationship;
+import com.proshomon.elasticsearch.nokkhotroelastic.model.model_old.Beneficiary;
 import com.proshomon.elasticsearch.nokkhotroelastic.repository.BeneficiaryRepository;
 import com.proshomon.elasticsearch.nokkhotroelastic.utils.Helper;
 import lombok.extern.slf4j.Slf4j;

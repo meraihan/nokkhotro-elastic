@@ -1,8 +1,8 @@
 package com.proshomon.elasticsearch.nokkhotroelastic;
 
-import com.proshomon.elasticsearch.nokkhotroelastic.ElasticModel.ElasticSearch;
-import com.proshomon.elasticsearch.nokkhotroelastic.model.MunicipalityNew;
-import com.proshomon.elasticsearch.nokkhotroelastic.model_old.Municipality;
+import com.proshomon.elasticsearch.nokkhotroelastic.model.ElasticModel.ElasticSearch;
+import com.proshomon.elasticsearch.nokkhotroelastic.model.model_new.MunicipalityNew;
+import com.proshomon.elasticsearch.nokkhotroelastic.model.model_old.Municipality;
 import com.proshomon.elasticsearch.nokkhotroelastic.repository.MunicipalityRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
