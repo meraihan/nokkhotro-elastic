@@ -6,6 +6,7 @@ import java.util.List;
 
 @Data
 public class Hospital {
+    private Integer id;
     private List<ConsultationsService> consultations;
     private List<SurgeriesService> surgeries;
 }

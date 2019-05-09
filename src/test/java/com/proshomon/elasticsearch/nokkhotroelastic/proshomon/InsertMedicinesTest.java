@@ -77,8 +77,6 @@ public class InsertMedicinesTest {
             } catch (Exception e){
                 log.error("Inserting Data Failed: {}", e);
             }
-
-
         }
     }
 
