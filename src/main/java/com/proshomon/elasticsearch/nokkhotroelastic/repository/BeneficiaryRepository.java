@@ -49,10 +49,10 @@ public class BeneficiaryRepository {
         }
     }
 
-    public List<Beneficiary> findByHHRelationWithHousehold(String householdId, String relations) {
-        String query = "SELECT * FROM beneficiary WHERE relation_with_household= ?  AND  houehold_ids=?";
+    public List<Beneficiary> findByHHRelationWithHousehold(String householdId) {
+        String query = "SELECT * FROM beneficiary WHERE   houehold_ids=?";
         try {
-            return jdbcTemplate.query(query, new Object[]{relations, householdId}, new BeneficiaryRowMapper());
+            return jdbcTemplate.query(query, new Object[]{householdId}, new BeneficiaryRowMapper());
         } catch (DataAccessException dae) {
             log.error("Beneficiary Data Not Found, Error: {}", dae.getLocalizedMessage());
             return new ArrayList<>();
@@ -65,7 +65,7 @@ public class BeneficiaryRepository {
             return jdbcTemplate.query(query, new Object[]{householdId}, new BeneficiaryRowMapper());
         } catch (DataAccessException dae) {
             log.error("Beneficiary Data Not Found, Error: {}", dae.getLocalizedMessage());
-            return null;
+            return new ArrayList<>();
         }
     }
 }

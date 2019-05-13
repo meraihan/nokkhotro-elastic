@@ -31,7 +31,7 @@ public class ServiceProviderRowMapper implements RowMapper<ServiceProvider> {
         serviceProvider.setBankAccountBranch(rs.getString("bank_account_branch"));
         serviceProvider.setBankRoutingNumber(rs.getString("bank_routing_no"));
         serviceProvider.setIsActive(rs.getBoolean("is_active"));
-        serviceProvider.setCategories(rs.getString("service_catagory"));
+//        serviceProvider.setCategories(rs.getString("service_catagory"));
         return serviceProvider;
     }
 }

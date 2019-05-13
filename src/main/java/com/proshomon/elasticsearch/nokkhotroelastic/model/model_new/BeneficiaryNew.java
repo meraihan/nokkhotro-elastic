@@ -1,12 +1,15 @@
 package com.proshomon.elasticsearch.nokkhotroelastic.model.model_new;
 
 import com.proshomon.elasticsearch.nokkhotroelastic.model.model_new.enums.DisabilityType;
+import com.proshomon.elasticsearch.nokkhotroelastic.model.model_new.enums.Gender;
+import com.proshomon.elasticsearch.nokkhotroelastic.model.model_new.enums.MaritalStatus;
 import com.proshomon.elasticsearch.nokkhotroelastic.model.model_new.enums.Relationship;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.elasticsearch.annotations.Document;
 import org.springframework.data.elasticsearch.annotations.Field;
 import org.springframework.data.elasticsearch.annotations.FieldType;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -31,15 +34,23 @@ public class BeneficiaryNew {
 	private Image profilePhoto;
 	private Boolean isActive;
 	private String addedByUserId;
-	private String gender;
-	private String maritalStatus;
+	private Gender gender;
+	private MaritalStatus maritalStatus;
 	private Relationship relationshipWithHead;
+	@DateTimeFormat(pattern = Strings.DATE_FORMAT)
+	@Field(type = FieldType.Date)
 	private Date dateOfBirth;
 	private DisabilityType disabilityType;
 	@Field(type = FieldType.Nested, includeInParent = true)
 	private Set<Fingerprint> fingerprints = new HashSet<>();
-	private Date createdAt;
+	@DateTimeFormat(pattern = Strings.DATETIME_FORMAT)
+	@Field(type = FieldType.Date)
+	private Date createdAt = new Date();
+	@DateTimeFormat(pattern = Strings.DATETIME_FORMAT)
+	@Field(type = FieldType.Date)
 	private Date updatedAt;
+	@DateTimeFormat(pattern = Strings.DATETIME_FORMAT)
+	@Field(type = FieldType.Date)
 	private Date deletedAt;
 
 	public boolean addFingerprint(Fingerprint fingerprint) {
