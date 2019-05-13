@@ -51,8 +51,6 @@ public class HouseholdTest {
 
             householdNew.setIsActive(Boolean.valueOf(String.valueOf(household.getStatus())));
             householdNew.setCreatedAt(Helper.localDateToDate(household.getCreatedAt()));
-            householdNew.setUpdatedAt(Helper.localDateToDate(household.getUpdatedAt()));
-            householdNew.setDeletedAt(Helper.localDateToDate(household.getDeletedAt()));
 
             String url = this.url + "household/household/";
             ResponseEntity<HouseholdNew> responseEntity =

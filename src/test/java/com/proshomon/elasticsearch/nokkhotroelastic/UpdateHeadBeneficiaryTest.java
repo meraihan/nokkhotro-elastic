@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.proshomon.elasticsearch.nokkhotroelastic.model.ElasticModel.ElasticSearch;
 import com.proshomon.elasticsearch.nokkhotroelastic.model.model_new.HouseholdNew;
 import com.proshomon.elasticsearch.nokkhotroelastic.model.model_old.Beneficiary;
+import com.proshomon.elasticsearch.nokkhotroelastic.model.model_proshomon.enums.Relationship;
 import com.proshomon.elasticsearch.nokkhotroelastic.repository.BeneficiaryRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
@@ -33,15 +34,22 @@ public class UpdateHeadBeneficiaryTest {
     @Test
     public void updateBeneficiaryIdTest(){
         RestTemplate restTemplate = new RestTemplate();
-        List<Beneficiary> beneficiarySelf = null;
+        List<Beneficiary> beneficiaryListByHHId = null;
         String headBeneficiaryId = "";
-        List<Beneficiary> beneficiaryOldList  = beneficiaryRepository.findAllSelf();
+        List<Beneficiary> beneficiaryOldList  = beneficiaryRepository.findAll();
         for (Beneficiary beneficiary : beneficiaryOldList){
-            beneficiarySelf = beneficiaryRepository.findByHHRelationWithHousehold(beneficiary.getHouseholdIds(), beneficiary.getRelationWithHousehold());
-            headBeneficiaryId = beneficiarySelf.get(0).getHouseholdIds();
+            beneficiaryListByHHId = beneficiaryRepository.findByHHRelationWithHousehold(beneficiary.getHouseholdIds());
+            if (beneficiaryListByHHId.size()!=0){
+                for (Beneficiary beneficiary1 : beneficiaryListByHHId){
+                    if(beneficiary1.getRelationWithHousehold().equals(String.valueOf(Relationship.SELF))){
+                        headBeneficiaryId = beneficiaryListByHHId.get(0).getHouseholdIds();
+                    }
+                }
 
+            }
+            String newBeneIf = headBeneficiaryId;
             Map<String, Object> map = new HashMap<>(), map2 = new HashMap<>(), map3 = new HashMap<>();
-            map3.put("id", beneficiarySelf.get(0).getHousehold().getId());
+            map3.put("id", beneficiaryListByHHId.get(0).getHousehold().getId());
             map2.put("match", map3);
             map.put("query", map2);
             HttpHeaders headers = new HttpHeaders();
@@ -55,7 +63,7 @@ public class UpdateHeadBeneficiaryTest {
 
             HouseholdNew aNew = new HouseholdNew();
             aNew.setId(responseEntity.getBody().getHits().getHits().get(0).get_source().getId());
-            aNew.setHeadBeneficiaryId(headBeneficiaryId);
+            aNew.setHeadBeneficiaryId(newBeneIf);
             aNew.setHouseholdName(responseEntity.getBody().getHits().getHits().get(0).get_source().getHouseholdName());
             aNew.setSize(responseEntity.getBody().getHits().getHits().get(0).get_source().getSize());
             aNew.setSmartCardId(responseEntity.getBody().getHits().getHits().get(0).get_source().getSmartCardId());
@@ -65,9 +73,9 @@ public class UpdateHeadBeneficiaryTest {
             aNew.setWardNo(responseEntity.getBody().getHits().getHits().get(0).get_source().getWardNo());
             aNew.setOccupation(responseEntity.getBody().getHits().getHits().get(0).get_source().getOccupation());
             aNew.setMunicipalityId(responseEntity.getBody().getHits().getHits().get(0).get_source().getMunicipalityId());
-            aNew.setAddedBy(responseEntity.getBody().getHits().getHits().get(0).get_source().getAddedBy());
+//            aNew.setAddedBy(responseEntity.getBody().getHits().getHits().get(0).get_source().getAddedBy());
             aNew.setPhone(responseEntity.getBody().getHits().getHits().get(0).get_source().getPhone());
-            aNew.setGeoPoint(responseEntity.getBody().getHits().getHits().get(0).get_source().getGeoPoint());
+//            aNew.setGeoPoint(responseEntity.getBody().getHits().getHits().get(0).get_source().getGeoPoint());
             aNew.setIsActive(responseEntity.getBody().getHits().getHits().get(0).get_source().getIsActive());
             aNew.setCreatedAt(responseEntity.getBody().getHits().getHits().get(0).get_source().getCreatedAt());
             aNew.setUpdatedAt(responseEntity.getBody().getHits().getHits().get(0).get_source().getUpdatedAt());
@@ -85,7 +93,6 @@ public class UpdateHeadBeneficiaryTest {
             }catch (DataAccessException e){
                 log.error(String.valueOf(e));
             }
-
         }
 
     }

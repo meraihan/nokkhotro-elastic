@@ -2,7 +2,10 @@ package com.proshomon.elasticsearch.nokkhotroelastic;
 
 import com.proshomon.elasticsearch.nokkhotroelastic.model.ElasticModel.ElasticSearch;
 import com.proshomon.elasticsearch.nokkhotroelastic.model.model_new.BeneficiaryNew;
+import com.proshomon.elasticsearch.nokkhotroelastic.model.model_new.Image;
 import com.proshomon.elasticsearch.nokkhotroelastic.model.model_new.enums.DisabilityType;
+import com.proshomon.elasticsearch.nokkhotroelastic.model.model_new.enums.Gender;
+import com.proshomon.elasticsearch.nokkhotroelastic.model.model_new.enums.MaritalStatus;
 import com.proshomon.elasticsearch.nokkhotroelastic.model.model_new.enums.Relationship;
 import com.proshomon.elasticsearch.nokkhotroelastic.model.model_old.Beneficiary;
 import com.proshomon.elasticsearch.nokkhotroelastic.repository.BeneficiaryRepository;
@@ -58,20 +61,26 @@ public class BeneficiaryTest {
             //Update household ids on beneficiary Repository
             beneficiaryRepository.updateHouseholdIds(beneficiary.getHousehold().getId(), householdIds);
 
+            String photoPathOld = beneficiary.getPhotoPath().substring(23);
+            String photoPathNew = "images/profile/"+photoPathOld;
+            Image image = new Image();
+            image.setLocation(photoPathNew);
+            beneficiaryNew.setProfilePhoto(image);
+
             beneficiaryNew.setHouseholdId(householdIds);
             beneficiaryNew.setId(beneficiary.getId().toString());
             beneficiaryNew.setName(beneficiary.getFullName());
             beneficiaryNew.setPhone(beneficiary.getContactNumber());
             beneficiaryNew.setIsActive(true);
-            beneficiaryNew.setGender(beneficiary.getGender().name());
-            beneficiaryNew.setMaritalStatus(beneficiary.getMarritalStatus().name());
+            beneficiaryNew.setGender(Gender.valueOf(beneficiary.getGender().name()));
+            beneficiaryNew.setMaritalStatus(MaritalStatus.valueOf(beneficiary.getMarritalStatus().name()));
             beneficiaryNew.setRelationshipWithHead(Relationship.valueOf(beneficiary.getRelationWithHousehold()));
             beneficiaryNew.setDateOfBirth(beneficiary.getDateOfBirth());
             beneficiaryNew.setDisabilityType(DisabilityType.valueOf(beneficiary.getDisability()));
             beneficiaryNew.setAddedByUserId(beneficiary.getCreatedBy().toString());
             beneficiaryNew.setCreatedAt(Helper.localDateToDate(beneficiary.getCreatedAt()));
-            beneficiaryNew.setUpdatedAt(Helper.localDateToDate(beneficiary.getUpdatedAt()));
-            beneficiaryNew.setDeletedAt(Helper.localDateToDate(beneficiary.getDeletedAt()));
+//            beneficiaryNew.setUpdatedAt(Helper.localDateToDate(beneficiary.getUpdatedAt()));
+//            beneficiaryNew.setDeletedAt(Helper.localDateToDate(beneficiary.getDeletedAt()));
 
             //Add beneficiary on elastic search
             String url1 = this.url + "beneficiary/beneficiary/";

@@ -40,9 +40,5 @@ public class SurgeriesProcedureTest {
                     restTemplate.postForEntity(url, proceduresRecord, SurgicalProceduresRecord.class);
             log.info("Status: {}", responseEntity.getStatusCode());
         }
-
     }
-
-
-
 }
