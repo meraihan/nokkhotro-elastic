@@ -12,8 +12,9 @@ public class DiagnosticTestServiceRowMapper implements RowMapper<DiagnosticTests
     @Override
     public DiagnosticTests mapRow(ResultSet rs, int i) throws SQLException {
         DiagnosticTests diagnosticTestsService = new DiagnosticTests();
+        diagnosticTestsService.setId(rs.getString("es_id"));
         diagnosticTestsService.setName(rs.getString("name"));
-        diagnosticTestsService.setCharge(rs.getDouble("fee"));
+        diagnosticTestsService.setPrice(rs.getBigDecimal("fee"));
         return diagnosticTestsService;
     }
 }

@@ -11,8 +11,9 @@ public class SurgeriesServiceRowMapper implements RowMapper<SurgeriesService> {
     @Override
     public SurgeriesService mapRow(ResultSet rs, int i) throws SQLException {
         SurgeriesService surgeriesService = new SurgeriesService();
+        surgeriesService.setId(rs.getString("es_id"));
         surgeriesService.setName(rs.getString("name"));
-        surgeriesService.setCharge(rs.getDouble("fee"));
+        surgeriesService.setPrice(rs.getBigDecimal("fee"));
         return surgeriesService;
     }
 }

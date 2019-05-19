@@ -12,7 +12,7 @@ public class ConsultationsServiceRowMapper implements RowMapper<ConsultationsSer
     public ConsultationsService mapRow(ResultSet rs, int i) throws SQLException {
         ConsultationsService consultationsService = new ConsultationsService();
         consultationsService.setName(rs.getString("name"));
-        consultationsService.setCharge(rs.getDouble("fee"));
+        consultationsService.setPrice(rs.getBigDecimal("fee"));
         return consultationsService;
     }
 }
