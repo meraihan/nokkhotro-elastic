@@ -27,4 +27,14 @@ public class HouseholdRepository {
         }
     }
 
+    public boolean update(String cardNo, String smartCardId) {
+        String query = "UPDATE household SET  card_no = ? WHERE smart_card_id = ?";
+        try {
+            return jdbcTemplate.update(query, new Object[]{cardNo, smartCardId}) == 1;
+        } catch (DataAccessException e) {
+            log.error("Update failed for household id: {}. Error: {}", smartCardId, e.getLocalizedMessage());
+            return false;
+        }
+    }
+
 }

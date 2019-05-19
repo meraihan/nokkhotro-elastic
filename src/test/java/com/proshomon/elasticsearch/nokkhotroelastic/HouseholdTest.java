@@ -39,6 +39,7 @@ public class HouseholdTest {
             householdNew.setHouseholdName(household.getHouseholdHeadName());
             householdNew.setSize(household.getNumOfMembers());
             householdNew.setSmartCardId(household.getSmartCardId());
+            householdNew.setCardNo(household.getCardNo());
             householdNew.setDivisionId(household.getDivisionIds());
             householdNew.setDistrictId(household.getDistrictIds());
             householdNew.setUpazillaId(household.getUpazillaIds());

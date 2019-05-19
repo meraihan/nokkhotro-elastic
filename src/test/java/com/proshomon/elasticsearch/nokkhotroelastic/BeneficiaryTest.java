@@ -79,8 +79,6 @@ public class BeneficiaryTest {
             beneficiaryNew.setDisabilityType(DisabilityType.valueOf(beneficiary.getDisability()));
             beneficiaryNew.setAddedByUserId(beneficiary.getCreatedBy().toString());
             beneficiaryNew.setCreatedAt(Helper.localDateToDate(beneficiary.getCreatedAt()));
-//            beneficiaryNew.setUpdatedAt(Helper.localDateToDate(beneficiary.getUpdatedAt()));
-//            beneficiaryNew.setDeletedAt(Helper.localDateToDate(beneficiary.getDeletedAt()));
 
             //Add beneficiary on elastic search
             String url1 = this.url + "beneficiary/beneficiary/";
