@@ -20,6 +20,7 @@ public class HouseholdNew {
 	private String phone;
 	private Integer size;
 	private String smartCardId;
+	private String cardNo;
 	private String divisionId;
 	private String districtId;
 	private String upazillaId;

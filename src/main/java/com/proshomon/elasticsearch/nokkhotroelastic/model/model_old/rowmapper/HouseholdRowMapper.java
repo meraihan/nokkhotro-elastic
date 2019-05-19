@@ -17,6 +17,7 @@ public class HouseholdRowMapper  implements RowMapper<Household> {
         household.setSmartCardId(rs.getString("smart_card_id"));
         household.setHouseholdHeadName(rs.getString("household_head_name"));
         household.setContactNumber(rs.getString("contact_number"));
+        household.setCardNo(rs.getString("card_no"));
         household.setStatus(Household.Status.valueOf(rs.getString("status")));
         household.setOccupation(rs.getString("occupation"));
         household.setNumOfMembers(rs.getInt("number_of_members"));

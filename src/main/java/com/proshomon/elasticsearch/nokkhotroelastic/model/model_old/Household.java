@@ -12,6 +12,7 @@ public class Household {
     private int slNo;
     private List<Beneficiary> beneficiaryList;
     private String smartCardId;
+    private String cardNo;
     private String householdHeadName;
     private String contactNumber;
     private Status status;
