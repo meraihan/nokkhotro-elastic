@@ -33,14 +33,14 @@ public class ServiceProviderRowMapper implements RowMapper<ServiceProvider> {
         serviceProvider.setBankAccountBranch(rs.getString("bank_account_branch"));
         serviceProvider.setBankRoutingNumber(rs.getString("bank_routing_no"));
         serviceProvider.setIsActive(rs.getBoolean("is_active"));
-        String category = rs.getString("service_catagory");
-        List<String> categoryList = Arrays.asList(category.split(","));
 
-        List<ServiceProviderType> types1 = new ArrayList<>();
+        String categorys = rs.getString("service_catagory");
+        List<String> categoryList = Arrays.asList(categorys.split(","));
+        List<ServiceProviderType> categoryEnumList = new ArrayList<>();
         for (int k=0; k<categoryList.size();k++){
-            types1.add(ServiceProviderType.valueOf(categoryList.get(k)));
+            categoryEnumList.add(ServiceProviderType.valueOf(categoryList.get(k)));
         }
-        Set<ServiceProviderType> setSerViceProvider = new HashSet<>(types1);
+        Set<ServiceProviderType> setSerViceProvider = new HashSet<>(categoryEnumList);
 
         serviceProvider.setCategories(setSerViceProvider);
         return serviceProvider;
