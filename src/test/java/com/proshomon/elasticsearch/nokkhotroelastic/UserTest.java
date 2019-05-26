@@ -7,7 +7,7 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.web.client.RestTemplate;
@@ -24,21 +24,21 @@ public class UserTest {
     @Value("${elasticsearch.url}")
     private String url;
 
-    public static PasswordEncoder bCryptEncoder = new BCryptPasswordEncoder();
+    PasswordEncoder encoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
 
     @Test
     public void saveUserTest(){
         RestTemplate restTemplate = new RestTemplate();
         UserNew user = new UserNew();
-        user.setId("2");
-        user.setUsername("admin");
-        user.setPassword(bCryptEncoder.encode("admin"));
-        user.setFirstName("Admin");
-        user.setLastName("admin");
-        user.setPhone("01722680407");
-        user.setEmail("raihan@gmail.com");
+        user.setId(null);
+        user.setUsername("concernbd");
+        user.setPassword(encoder.encode("concernbd"));
+        user.setFirstName("concernbd");
+        user.setLastName("concernbd");
+        user.setPhone("01722680415");
+        user.setEmail("concernbd@gmail.com");
         user.setServiceProviderId("");
-        user.setIsServiceProvider(true);
+        user.setIsServiceProvider(false);
         user.setIsEnabled(true);
         user.setIsActive(true);
         Set<String> roles = new HashSet<>();
