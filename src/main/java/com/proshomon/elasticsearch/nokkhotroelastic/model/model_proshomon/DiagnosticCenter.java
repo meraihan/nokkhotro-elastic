@@ -8,4 +8,3 @@ import java.util.List;
 public class DiagnosticCenter {
     private List<DiagnosticTests> diagnosticTests;
 }
-

@@ -1,6 +1,5 @@
 package com.proshomon.elasticsearch.nokkhotroelastic.model.model_proshomon;
 
-import com.proshomon.elasticsearch.nokkhotroelastic.model.model_new.Strings;
 import com.proshomon.elasticsearch.nokkhotroelastic.model.model_proshomon.enums.ServiceCategory;
 import com.proshomon.elasticsearch.nokkhotroelastic.model.model_proshomon.generic.services.DiagnosticTestService;
 import com.proshomon.elasticsearch.nokkhotroelastic.model.model_proshomon.generic.services.PrescribedMedicines;
@@ -31,11 +30,12 @@ public class Prescription {
 	private Set<SurgicalProceduresService> surgicalProceduresServices = new HashSet<>();
 	private Set<DiagnosticTestService> diagnosticTestServices = new HashSet<>();
 	private Set<PrescribedMedicines> prescribedMedicines = new HashSet<>();
-	private boolean isComplete;
+	@Field(type = FieldType.Boolean)
+	private Boolean isComplete = false;
 	@DateTimeFormat(pattern = Strings.DATETIME_FORMAT)
 	@Field(type = FieldType.Date)
 	private Date createdAt = new Date();
-
+	
 	public boolean sameAs(Prescription b) {
 		Prescription a = this;
 		return a.getBeneficiaryId().equals(b.getBeneficiaryId()) && a.getUniqueIdentifier().equals(b.getUniqueIdentifier());

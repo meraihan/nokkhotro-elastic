@@ -1,10 +1,12 @@
 package com.proshomon.elasticsearch.nokkhotroelastic.model.model_proshomon.rowmapper;
 
 import com.proshomon.elasticsearch.nokkhotroelastic.model.model_proshomon.ServiceProvider;
+import com.proshomon.elasticsearch.nokkhotroelastic.model.model_proshomon.enums.ServiceProviderType;
 import org.springframework.jdbc.core.RowMapper;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.*;
 
 public class ServiceProviderRowMapper implements RowMapper<ServiceProvider> {
 
@@ -31,7 +33,16 @@ public class ServiceProviderRowMapper implements RowMapper<ServiceProvider> {
         serviceProvider.setBankAccountBranch(rs.getString("bank_account_branch"));
         serviceProvider.setBankRoutingNumber(rs.getString("bank_routing_no"));
         serviceProvider.setIsActive(rs.getBoolean("is_active"));
-//        serviceProvider.setCategories(rs.getString("service_catagory"));
+        String category = rs.getString("service_catagory");
+        List<String> categoryList = Arrays.asList(category.split(","));
+
+        List<ServiceProviderType> types1 = new ArrayList<>();
+        for (int k=0; k<categoryList.size();k++){
+            types1.add(ServiceProviderType.valueOf(categoryList.get(k)));
+        }
+        Set<ServiceProviderType> setSerViceProvider = new HashSet<>(types1);
+
+        serviceProvider.setCategories(setSerViceProvider);
         return serviceProvider;
     }
 }
