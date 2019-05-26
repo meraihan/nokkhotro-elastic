@@ -1,5 +1,7 @@
 package com.proshomon.elasticsearch.nokkhotroelastic;
 
+import com.proshomon.elasticsearch.nokkhotroelastic.model.model_new.Balance;
+import com.proshomon.elasticsearch.nokkhotroelastic.model.model_new.HouseholdBalance;
 import com.proshomon.elasticsearch.nokkhotroelastic.model.model_new.HouseholdNew;
 import com.proshomon.elasticsearch.nokkhotroelastic.model.model_old.Household;
 import com.proshomon.elasticsearch.nokkhotroelastic.repository.HouseholdRepository;
@@ -14,6 +16,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.web.client.RestTemplate;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @Slf4j
@@ -48,6 +51,23 @@ public class HouseholdTest {
             householdNew.setMunicipalityId(household.getMunicipalityIds());
 
             householdNew.setAddedByUserId(null);
+
+            HouseholdBalance hhbalance = new HouseholdBalance();
+            Balance balance = new Balance();
+            balance.setPhc(BigDecimal.valueOf(400));
+            balance.setAccident(BigDecimal.valueOf(400));
+            balance.setMaternity(BigDecimal.valueOf(400));
+            hhbalance.setOpeningBalance(balance);
+
+            Balance balance1 = new Balance();
+            balance1.setPhc(BigDecimal.valueOf(400));
+            balance1.setAccident(BigDecimal.valueOf(400));
+            balance1.setMaternity(BigDecimal.valueOf(400));
+            hhbalance.setCurrentBalance(balance1);
+
+            householdNew.setHouseholdBalance(hhbalance);
+
+
             householdNew.setPhone(household.getContactNumber());
 
             householdNew.setIsActive(Boolean.valueOf(String.valueOf(household.getStatus())));
