@@ -35,7 +35,7 @@ public class DiagnosticTest {
             diagnosticTestRecord.setId(record.getId());
             diagnosticTestRecord.setName(record.getName());
 
-            String url = this.url + "diagnostic_test_records/diagnostic_test_records/";
+            String url = this.url + "diagnostic_test/diagnostic_test/";
 
             ResponseEntity<DiagnosticTestRecord> responseEntity =
                     restTemplate.postForEntity(url, diagnosticTestRecord, DiagnosticTestRecord.class);

@@ -36,9 +36,9 @@ public class MunicipalityTest {
 
         for (Municipality municipality : municipalityOldList){
             Map<String, Object> map = new HashMap<>(), map2 = new HashMap<>(), map3 = new HashMap<>();
-            if(municipality.getCode()==14){
+            if(municipality.getCode()==50){
                 map3.put("name", "Feni");
-            } else if(municipality.getCode()==50){
+            } else if(municipality.getCode()==14){
                 map3.put("name", "Chadpur");
             } else map3.put("name", "null");
 

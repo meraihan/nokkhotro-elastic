@@ -24,7 +24,7 @@ public class InsertHouseHoldRFIDTest {
     @Autowired
     HouseholdRepository householdRepository;
 
-    public static final String XLSX_FILE_PATH = "./190512 Final_HH_Data_Sheet-Uppercase 500.xlsx";
+    public static final String XLSX_FILE_PATH = "./190521 Final_HH_Data_Sheet-Uppercase 内码.xlsx";
 
     @Test
     public void readWriteFromExcel() throws Exception {
@@ -32,26 +32,28 @@ public class InsertHouseHoldRFIDTest {
         FileInputStream file = new FileInputStream(new File(XLSX_FILE_PATH));
         XSSFWorkbook workbook = new XSSFWorkbook(file);
         XSSFSheet sheet = workbook.getSheetAt(0);
-        Row row;
+        Row row = sheet.createRow(0);
         for(int i=1; i<=sheet.getLastRowNum(); i++){
             row = sheet.getRow(i);
 
-            String smartCardId;
-            if(row.getCell(1)==null){smartCardId = "null";}
-            else smartCardId = row.getCell(1).toString();
+            String id;
+            if(row.getCell(0)==null){id = "0";}
+            else {
+                id = row.getCell(0).toString();
+            }
 
             String cardNo;
             Cell cNo = row.getCell(3, Row.MissingCellPolicy.CREATE_NULL_AS_BLANK);
             if (cNo != null) {
                 cNo.setCellType(CellType.STRING);
-                cardNo = cNo.getStringCellValue();
+                cardNo = "0" + cNo.getStringCellValue();
             }
             else {
                 cardNo = null;
             }
 
             try {
-                householdRepository.update(cardNo, smartCardId);
+                householdRepository.update(cardNo, id);
             } catch (Exception e){
                 log.error("Inserting Data Failed: {}", e);
             }

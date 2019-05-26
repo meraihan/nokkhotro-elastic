@@ -2,13 +2,12 @@ package com.proshomon.elasticsearch.nokkhotroelastic;
 
 import com.proshomon.elasticsearch.nokkhotroelastic.model.ElasticModel.ElasticSearch;
 import com.proshomon.elasticsearch.nokkhotroelastic.model.model_new.BeneficiaryNew;
+import com.proshomon.elasticsearch.nokkhotroelastic.model.model_new.Fingerprint;
 import com.proshomon.elasticsearch.nokkhotroelastic.model.model_new.Image;
-import com.proshomon.elasticsearch.nokkhotroelastic.model.model_new.enums.DisabilityType;
-import com.proshomon.elasticsearch.nokkhotroelastic.model.model_new.enums.Gender;
-import com.proshomon.elasticsearch.nokkhotroelastic.model.model_new.enums.MaritalStatus;
-import com.proshomon.elasticsearch.nokkhotroelastic.model.model_new.enums.Relationship;
+import com.proshomon.elasticsearch.nokkhotroelastic.model.model_new.enums.*;
 import com.proshomon.elasticsearch.nokkhotroelastic.model.model_old.Beneficiary;
 import com.proshomon.elasticsearch.nokkhotroelastic.repository.BeneficiaryRepository;
+import com.proshomon.elasticsearch.nokkhotroelastic.repository.FingerPrintRepository;
 import com.proshomon.elasticsearch.nokkhotroelastic.utils.Helper;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
@@ -20,9 +19,7 @@ import org.springframework.http.*;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.web.client.RestTemplate;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Slf4j
 @SpringBootTest
@@ -34,6 +31,9 @@ public class BeneficiaryTest {
 
     @Autowired
     BeneficiaryRepository beneficiaryRepository;
+
+    @Autowired
+    FingerPrintRepository fingerPrintRepository;
 
     @Test
     public void saveBeneficiaryTest(){
@@ -78,6 +78,18 @@ public class BeneficiaryTest {
             beneficiaryNew.setDateOfBirth(beneficiary.getDateOfBirth());
             beneficiaryNew.setDisabilityType(DisabilityType.valueOf(beneficiary.getDisability()));
             beneficiaryNew.setAddedByUserId(beneficiary.getCreatedBy().toString());
+
+            Set<Fingerprint> fingerprintSet = new HashSet<>();
+            Fingerprint fingerprint = new Fingerprint();
+            fingerprint.setType(FingerprintType.PRIMARY);
+            fingerprint.setKey(beneficiary.getFingerprintKey1());
+            fingerprintSet.add(fingerprint);
+            Fingerprint fingerprint1 = new Fingerprint();
+            fingerprint1.setType(FingerprintType.SECONDARY);
+            fingerprint1.setKey(beneficiary.getFingerprintKey2());
+            fingerprintSet.add(fingerprint1);
+
+            beneficiaryNew.setFingerprints(fingerprintSet);
             beneficiaryNew.setCreatedAt(Helper.localDateToDate(beneficiary.getCreatedAt()));
 
             //Add beneficiary on elastic search

@@ -38,9 +38,9 @@ public class UpazillaTest {
         for (Upazilla upazilla : upazillaOldList){
             Map<String, Object> map = new HashMap<>(), map2 = new HashMap<>(), map3 = new HashMap<>();
             if(upazilla.getCode()==22){
-                map3.put("name", "Feni");
-            } else if(upazilla.getCode()==29){
                 map3.put("name", "Chadpur");
+            } else if(upazilla.getCode()==29){
+                map3.put("name", "Feni");
             } else map3.put("name", "null");
 
             map2.put("match", map3);

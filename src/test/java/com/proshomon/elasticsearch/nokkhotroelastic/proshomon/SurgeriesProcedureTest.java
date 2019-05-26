@@ -31,10 +31,10 @@ public class SurgeriesProcedureTest {
         List<SurgicalProceduresRecord> recordList = surgeriesProcedureRepository.findAll();
         SurgicalProceduresRecord proceduresRecord = new SurgicalProceduresRecord();
         for (SurgicalProceduresRecord record : recordList){
-            proceduresRecord.setId(record.getId());
+            proceduresRecord.setId(null);
             proceduresRecord.setName(record.getName());
 
-            String url = this.url + "generic_surgical_procedures/generic_surgical_procedures/";
+            String url = this.url + "surgery/surgery/";
 
             ResponseEntity<SurgicalProceduresRecord> responseEntity =
                     restTemplate.postForEntity(url, proceduresRecord, SurgicalProceduresRecord.class);
