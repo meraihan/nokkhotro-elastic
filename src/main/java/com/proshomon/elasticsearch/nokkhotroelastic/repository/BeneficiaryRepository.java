@@ -59,10 +59,10 @@ public class BeneficiaryRepository {
         }
     }
 
-    public List<Beneficiary> getBeneficiaryListByHouseholdId(Integer householdId) {
-        String query = "SELECT * FROM beneficiary WHERE household_id = ?";
+    public List<Beneficiary> getBeneficiaryListById(Integer beneficiaryId) {
+        String query = "SELECT * FROM beneficiary WHERE id = ?";
         try {
-            return jdbcTemplate.query(query, new Object[]{householdId}, new BeneficiaryRowMapper());
+            return jdbcTemplate.query(query, new Object[]{beneficiaryId}, new BeneficiaryRowMapper());
         } catch (DataAccessException dae) {
             log.error("Beneficiary Data Not Found, Error: {}", dae.getLocalizedMessage());
             return new ArrayList<>();

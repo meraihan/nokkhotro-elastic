@@ -27,12 +27,22 @@ public class HouseholdRepository {
         }
     }
 
-    public boolean update(String cardNo, String smartCardId) {
-        String query = "UPDATE household SET  card_no = ? WHERE smart_card_id = ?";
+    public boolean update(String cardNo, String id) {
+        String query = "UPDATE household SET  card_no = ? WHERE id = ?";
         try {
-            return jdbcTemplate.update(query, new Object[]{cardNo, smartCardId}) == 1;
+            return jdbcTemplate.update(query, new Object[]{cardNo, id}) == 1;
         } catch (DataAccessException e) {
-            log.error("Update failed for household id: {}. Error: {}", smartCardId, e.getLocalizedMessage());
+            log.error("Update failed for household id: {}. Error: {}", id, e.getLocalizedMessage());
+            return false;
+        }
+    }
+
+    public boolean updateSmartCardId(String smartCardId, int id) {
+        String query = "UPDATE household SET  smart_card_id = ? WHERE id = ?";
+        try {
+            return jdbcTemplate.update(query, smartCardId, id) == 1;
+        } catch (DataAccessException e) {
+            log.error("Error: {}", e.getLocalizedMessage());
             return false;
         }
     }
