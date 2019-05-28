@@ -1,4 +1,4 @@
-package com.datasoft.proshomon.backend.model;
+package com.proshomon.elasticsearch.nokkhotroelastic.model.model_proshomon;
 
 import lombok.Data;
 import org.springframework.data.annotation.Id;
@@ -12,7 +12,7 @@ import java.util.Set;
 
 @Document(indexName = "user", type = "user")
 @Data
-public class User {
+public class Users {
 
 	
 	@Id

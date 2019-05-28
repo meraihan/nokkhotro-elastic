@@ -1,9 +1,9 @@
-package com.datasoft.proshomon.backend.model;
+package com.proshomon.elasticsearch.nokkhotroelastic.model.model_proshomon;
 
-import com.datasoft.proshomon.backend.model.enums.DisabilityType;
-import com.datasoft.proshomon.backend.model.enums.Gender;
-import com.datasoft.proshomon.backend.model.enums.MaritalStatus;
-import com.datasoft.proshomon.backend.model.enums.Relationship;
+import com.proshomon.elasticsearch.nokkhotroelastic.model.model_proshomon.enums.DisabilityType;
+import com.proshomon.elasticsearch.nokkhotroelastic.model.model_proshomon.enums.Gender;
+import com.proshomon.elasticsearch.nokkhotroelastic.model.model_proshomon.enums.MaritalStatus;
+import com.proshomon.elasticsearch.nokkhotroelastic.model.model_proshomon.enums.Relationship;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.elasticsearch.annotations.Document;
@@ -19,7 +19,7 @@ import java.util.Set;
 
 @Data
 @Document(indexName = "beneficiary", type = "beneficiary")
-public class Beneficiary {
+public class Beneficiaries {
     @Id
     private String id;
     @NotNull

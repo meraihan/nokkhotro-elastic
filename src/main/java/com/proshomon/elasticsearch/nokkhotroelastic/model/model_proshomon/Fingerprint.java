@@ -1,6 +1,6 @@
-package com.datasoft.proshomon.backend.model;
+package com.proshomon.elasticsearch.nokkhotroelastic.model.model_proshomon;
 
-import com.datasoft.proshomon.backend.model.enums.FingerprintType;
+import com.proshomon.elasticsearch.nokkhotroelastic.model.model_proshomon.enums.FingerprintType;
 import lombok.Data;
 
 import javax.validation.constraints.NotNull;

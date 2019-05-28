@@ -1,4 +1,4 @@
-package com.datasoft.proshomon.backend.model;
+package com.proshomon.elasticsearch.nokkhotroelastic.model.model_proshomon;
 
 import java.util.Date;
 import java.util.concurrent.atomic.AtomicLong;

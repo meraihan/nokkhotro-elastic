@@ -1,6 +1,6 @@
-package com.datasoft.proshomon.backend.model;
+package com.proshomon.elasticsearch.nokkhotroelastic.model.model_proshomon;
 
-import com.datasoft.proshomon.backend.model.enums.ServiceCategory;
+import com.proshomon.elasticsearch.nokkhotroelastic.model.model_proshomon.enums.ServiceCategory;
 import lombok.Data;
 
 import java.math.BigDecimal;

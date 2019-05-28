@@ -43,6 +43,7 @@ public class ServiceProviderRowMapper implements RowMapper<ServiceProvider> {
         Set<ServiceProviderType> setSerViceProvider = new HashSet<>(categoryEnumList);
 
         serviceProvider.setCategories(setSerViceProvider);
+        serviceProvider.setCreatedAt(rs.getDate("created_at"));
         return serviceProvider;
     }
 }

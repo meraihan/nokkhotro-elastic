@@ -1,7 +1,7 @@
 package com.proshomon.elasticsearch.nokkhotroelastic.model.ElasticModel;
 
-import com.proshomon.elasticsearch.nokkhotroelastic.model.model_new.HouseholdBalance;
-import com.proshomon.elasticsearch.nokkhotroelastic.model.model_new.UserNew;
+import com.proshomon.elasticsearch.nokkhotroelastic.model.model_proshomon.HouseholdBalance;
+import com.proshomon.elasticsearch.nokkhotroelastic.model.model_proshomon.Users;
 import lombok.Data;
 import org.elasticsearch.common.geo.GeoPoint;
 
@@ -30,7 +30,7 @@ public class Source {
     private HouseholdBalance householdBalance;
     private String phone;
     private GeoPoint geoPoint;
-    private UserNew addedBy;
+    private Users addedBy;
     private Boolean isActive;
     private Date createdAt;
     private Date updatedAt;

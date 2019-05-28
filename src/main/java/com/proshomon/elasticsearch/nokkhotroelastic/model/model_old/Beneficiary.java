@@ -30,7 +30,6 @@ public class Beneficiary {
     private LocalDateTime updatedAt;
     private LocalDateTime deletedAt;
 
-
     public enum MarritalStatus{
         MARRIED, UNMARRIED
     }
