@@ -34,6 +34,7 @@ public class ServiceProviderTest {
     DiagnosticCenterRepository diagnosticCenterRepository;
 
     @Test
+//    @Ignore
     public void saveServiceProvider(){
         RestTemplate restTemplate = new RestTemplate();
         List<ServiceProvider> serviceProviderList = serviceProviderRepository.findAll();
@@ -76,6 +77,7 @@ public class ServiceProviderTest {
             diagnosticCenter.setDiagnosticTests(diagnosticTests);
             serviceProvider.setDiagnosticCenter(diagnosticCenter);
             serviceProvider.setCategories(provider.getCategories());
+            serviceProvider.setCreatedAt(provider.getCreatedAt());
 
             String url = this.url + "service_provider/service_provider/";
             ResponseEntity<ServiceProvider> responseEntity =

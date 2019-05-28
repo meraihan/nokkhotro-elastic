@@ -3,6 +3,7 @@ package com.proshomon.elasticsearch.nokkhotroelastic.proshomon;
 import com.proshomon.elasticsearch.nokkhotroelastic.model.model_proshomon.SurgicalProceduresRecord;
 import com.proshomon.elasticsearch.nokkhotroelastic.repository.proshomon.SurgeriesProcedureRepository;
 import lombok.extern.slf4j.Slf4j;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +27,7 @@ public class SurgeriesProcedureTest {
     SurgeriesProcedureRepository surgeriesProcedureRepository;
 
     @Test
+    @Ignore
     public void saveSurgeriesProcedureTest(){
         RestTemplate restTemplate = new RestTemplate();
         List<SurgicalProceduresRecord> recordList = surgeriesProcedureRepository.findAll();

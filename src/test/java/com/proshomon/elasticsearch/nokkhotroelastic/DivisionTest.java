@@ -1,15 +1,16 @@
 package com.proshomon.elasticsearch.nokkhotroelastic;
 
-import com.proshomon.elasticsearch.nokkhotroelastic.model.model_new.DivisionNew;
 import com.proshomon.elasticsearch.nokkhotroelastic.model.model_old.Division;
+import com.proshomon.elasticsearch.nokkhotroelastic.model.model_proshomon.Divisions;
 import com.proshomon.elasticsearch.nokkhotroelastic.repository.DivisionRepository;
 import lombok.extern.slf4j.Slf4j;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.http.*;
+import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.web.client.RestTemplate;
 
@@ -27,11 +28,12 @@ public class DivisionTest {
     DivisionRepository divisionRepository;
 
     @Test
+    @Ignore
     public void saveDivisionTest(){
 
         List<Division> divisionList = divisionRepository.findAll();
 
-        DivisionNew newDivision = new DivisionNew();
+        Divisions newDivision = new Divisions();
         RestTemplate restTemplate = new RestTemplate();
 
         for (Division oldDivision : divisionList){
@@ -40,8 +42,8 @@ public class DivisionTest {
             newDivision.setCode(oldDivision.getCode().toString());
 
             String url = this.url + "division/division/";
-            ResponseEntity<DivisionNew> responseEntity =
-                    restTemplate.postForEntity(url, newDivision, DivisionNew.class);
+            ResponseEntity<Divisions> responseEntity =
+                    restTemplate.postForEntity(url, newDivision, Divisions.class);
             log.info("Status: {}", responseEntity.getStatusCode());
         }
     }

@@ -1,7 +1,8 @@
 package com.proshomon.elasticsearch.nokkhotroelastic;
 
-import com.proshomon.elasticsearch.nokkhotroelastic.model.model_new.UserNew;
+import com.proshomon.elasticsearch.nokkhotroelastic.model.model_proshomon.Users;
 import lombok.extern.slf4j.Slf4j;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Value;
@@ -27,9 +28,10 @@ public class UserTest {
     PasswordEncoder encoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
 
     @Test
+    @Ignore
     public void saveUserTest(){
         RestTemplate restTemplate = new RestTemplate();
-        UserNew user = new UserNew();
+        Users user = new Users();
         user.setId(null);
         user.setUsername("concernbd");
         user.setPassword(encoder.encode("concernbd"));
@@ -48,8 +50,8 @@ public class UserTest {
         user.setCreatedAt(new Date());
 
         String url = this.url + "user/user/";
-        ResponseEntity<UserNew> responseEntity =
-                restTemplate.postForEntity(url, user, UserNew.class);
+        ResponseEntity<Users> responseEntity =
+                restTemplate.postForEntity(url, user, Users.class);
         log.info("Status: {}", responseEntity.getStatusCode());
     }
 }

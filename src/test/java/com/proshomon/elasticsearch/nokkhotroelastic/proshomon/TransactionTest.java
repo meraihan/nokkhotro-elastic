@@ -2,6 +2,7 @@ package com.proshomon.elasticsearch.nokkhotroelastic.proshomon;
 
 import com.proshomon.elasticsearch.nokkhotroelastic.model.model_proshomon.Transaction;
 import lombok.extern.slf4j.Slf4j;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Value;
@@ -19,6 +20,7 @@ public class TransactionTest {
     private String url;
 
     @Test
+    @Ignore
     public void saveTransaction(){
 
         Transaction transaction = new Transaction();

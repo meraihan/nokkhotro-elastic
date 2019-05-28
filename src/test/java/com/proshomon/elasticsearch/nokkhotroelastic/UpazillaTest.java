@@ -1,10 +1,11 @@
 package com.proshomon.elasticsearch.nokkhotroelastic;
 
 import com.proshomon.elasticsearch.nokkhotroelastic.model.ElasticModel.ElasticSearch;
-import com.proshomon.elasticsearch.nokkhotroelastic.model.model_new.UpazillaNew;
 import com.proshomon.elasticsearch.nokkhotroelastic.model.model_old.Upazilla;
+import com.proshomon.elasticsearch.nokkhotroelastic.model.model_proshomon.Upazillas;
 import com.proshomon.elasticsearch.nokkhotroelastic.repository.UpazillaRepository;
 import lombok.extern.slf4j.Slf4j;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,10 +31,11 @@ public class UpazillaTest {
     UpazillaRepository upazillaRepository;
 
     @Test
+    @Ignore
     public void saveUpazillaTest(){
         RestTemplate restTemplate = new RestTemplate();
         List<Upazilla> upazillaOldList = upazillaRepository.findAll();
-        UpazillaNew upazillaNew = new UpazillaNew();
+        Upazillas upazillaNew = new Upazillas();
 
         for (Upazilla upazilla : upazillaOldList){
             Map<String, Object> map = new HashMap<>(), map2 = new HashMap<>(), map3 = new HashMap<>();
@@ -63,8 +65,8 @@ public class UpazillaTest {
             upazillaNew.setCode(upazilla.getCode().toString());
             upazillaNew.setParentId(responseEntity.getBody().getHits().getHits().get(0).get_id());
             String url1 = this.url + "upazilla/upazilla/";
-            ResponseEntity<UpazillaNew> responseEntity1 =
-                    restTemplate.postForEntity(url1, upazillaNew, UpazillaNew.class);
+            ResponseEntity<Upazillas> responseEntity1 =
+                    restTemplate.postForEntity(url1, upazillaNew, Upazillas.class);
             log.info("Status: {}", responseEntity1.getStatusCode());
         }
     }

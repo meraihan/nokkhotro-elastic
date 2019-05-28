@@ -6,6 +6,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +27,7 @@ public class InsertMedicinesTest {
     public static final String XLSX_FILE_PATH = "./drug_recipe_comp_1556793490.xlsx";
 
     @Test
+    @Ignore
     public void readWriteFromExcel() throws Exception {
 
         FileInputStream file = new FileInputStream(new File(XLSX_FILE_PATH));

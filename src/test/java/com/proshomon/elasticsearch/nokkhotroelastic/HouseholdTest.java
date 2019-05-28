@@ -1,9 +1,9 @@
 package com.proshomon.elasticsearch.nokkhotroelastic;
 
-import com.proshomon.elasticsearch.nokkhotroelastic.model.model_new.Balance;
-import com.proshomon.elasticsearch.nokkhotroelastic.model.model_new.HouseholdBalance;
-import com.proshomon.elasticsearch.nokkhotroelastic.model.model_new.HouseholdNew;
 import com.proshomon.elasticsearch.nokkhotroelastic.model.model_old.Household;
+import com.proshomon.elasticsearch.nokkhotroelastic.model.model_proshomon.Balance;
+import com.proshomon.elasticsearch.nokkhotroelastic.model.model_proshomon.HouseholdBalance;
+import com.proshomon.elasticsearch.nokkhotroelastic.model.model_proshomon.Households;
 import com.proshomon.elasticsearch.nokkhotroelastic.repository.HouseholdRepository;
 import com.proshomon.elasticsearch.nokkhotroelastic.utils.Helper;
 import lombok.extern.slf4j.Slf4j;
@@ -31,26 +31,27 @@ public class HouseholdTest {
     HouseholdRepository householdRepository;
 
     @Test
+//    @Ignore
     public void saveHouseholdTest(){
         List<Household> householdOldList = householdRepository.findAll();
-        HouseholdNew householdNew = new HouseholdNew();
+        Households households = new Households();
         RestTemplate restTemplate = new RestTemplate();
 
         for (Household household : householdOldList){
-            householdNew.setId(household.getId().toString());
-            householdNew.setHeadBeneficiaryId(null);
-            householdNew.setHouseholdName(household.getHouseholdHeadName());
-            householdNew.setSize(household.getNumOfMembers());
-            householdNew.setSmartCardId(household.getSmartCardId());
-            householdNew.setCardNo(household.getCardNo());
-            householdNew.setDivisionId(household.getDivisionIds());
-            householdNew.setDistrictId(household.getDistrictIds());
-            householdNew.setUpazillaId(household.getUpazillaIds());
-            householdNew.setWardNo(household.getWordNo());
-            householdNew.setOccupation(household.getOccupation());
-            householdNew.setMunicipalityId(household.getMunicipalityIds());
+            households.setId(household.getId().toString());
+            households.setHeadBeneficiaryId(null);
+            households.setHouseholdName(household.getHouseholdHeadName());
+            households.setSize(household.getNumOfMembers());
+            households.setSmartCardId(household.getSmartCardId());
+            households.setCardNo(household.getCardNo());
+            households.setDivisionId(household.getDivisionIds());
+            households.setDistrictId(household.getDistrictIds());
+            households.setUpazillaId(household.getUpazillaIds());
+            households.setWardNo(household.getWordNo());
+            households.setOccupation(household.getOccupation());
+            households.setMunicipalityId(household.getMunicipalityIds());
 
-            householdNew.setAddedByUserId(null);
+            households.setAddedByUserId(null);
 
             HouseholdBalance hhbalance = new HouseholdBalance();
             Balance balance = new Balance();
@@ -66,14 +67,14 @@ public class HouseholdTest {
             balance1.setMaternity(BigDecimal.valueOf(12700.00));
             hhbalance.setCurrentBalance(balance1);
 
-            householdNew.setHouseholdBalance(hhbalance);
-            householdNew.setPhone(household.getContactNumber());
-            householdNew.setIsActive(Boolean.TRUE);
-            householdNew.setCreatedAt(Helper.localDateToDate(household.getCreatedAt()));
+            households.setHouseholdBalance(hhbalance);
+            households.setPhone(household.getContactNumber());
+            households.setIsActive(Boolean.TRUE);
+            households.setCreatedAt(Helper.localDateToDate(household.getCreatedAt()));
 
             String url = this.url + "household/household/";
-            ResponseEntity<HouseholdNew> responseEntity =
-                    restTemplate.postForEntity(url, householdNew, HouseholdNew.class);
+            ResponseEntity<Households> responseEntity =
+                    restTemplate.postForEntity(url, households, Households.class);
             log.info("Status: {}", responseEntity.getStatusCode());
         }
     }

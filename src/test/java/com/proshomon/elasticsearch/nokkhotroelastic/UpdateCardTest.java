@@ -2,12 +2,13 @@ package com.proshomon.elasticsearch.nokkhotroelastic;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.proshomon.elasticsearch.nokkhotroelastic.model.ElasticModel.ElasticSearch;
-import com.proshomon.elasticsearch.nokkhotroelastic.model.model_new.Balance;
-import com.proshomon.elasticsearch.nokkhotroelastic.model.model_new.HouseholdBalance;
-import com.proshomon.elasticsearch.nokkhotroelastic.model.model_new.HouseholdNew;
 import com.proshomon.elasticsearch.nokkhotroelastic.model.model_old.Household;
+import com.proshomon.elasticsearch.nokkhotroelastic.model.model_proshomon.Balance;
+import com.proshomon.elasticsearch.nokkhotroelastic.model.model_proshomon.HouseholdBalance;
+import com.proshomon.elasticsearch.nokkhotroelastic.model.model_proshomon.Households;
 import com.proshomon.elasticsearch.nokkhotroelastic.repository.HouseholdRepository;
 import lombok.extern.slf4j.Slf4j;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +24,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+
 @Slf4j
 @SpringBootTest
 @RunWith(SpringRunner.class)
@@ -34,6 +36,7 @@ public class UpdateCardTest {
     HouseholdRepository householdRepository;
 
     @Test
+    @Ignore
     public void updateCard(){
         RestTemplate restTemplate = new RestTemplate();
         List<Household> householdOldList = householdRepository.findAll();
@@ -52,7 +55,7 @@ public class UpdateCardTest {
                     .exchange(url, HttpMethod.POST, entity, ElasticSearch.class);
             log.info("Body: {}", responseEntity.getBody());
 
-            HouseholdNew aNew = new HouseholdNew();
+            Households aNew = new Households();
             aNew.setId(responseEntity.getBody().getHits().getHits().get(0).get_source().getId());
             aNew.setHeadBeneficiaryId(responseEntity.getBody().getHits().getHits().get(0).get_source().getHeadBeneficiaryId());
             aNew.setHouseholdName(responseEntity.getBody().getHits().getHits().get(0).get_source().getHouseholdName());

@@ -7,6 +7,7 @@ import org.apache.poi.ss.usermodel.CellType;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +28,7 @@ public class InsertHouseHoldRFIDTest {
     public static final String XLSX_FILE_PATH = "./190521 Final_HH_Data_Sheet-Uppercase 内码.xlsx";
 
     @Test
+    @Ignore
     public void readWriteFromExcel() throws Exception {
 
         FileInputStream file = new FileInputStream(new File(XLSX_FILE_PATH));

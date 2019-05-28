@@ -1,10 +1,11 @@
 package com.proshomon.elasticsearch.nokkhotroelastic;
 
 import com.proshomon.elasticsearch.nokkhotroelastic.model.ElasticModel.ElasticSearch;
-import com.proshomon.elasticsearch.nokkhotroelastic.model.model_new.MunicipalityNew;
 import com.proshomon.elasticsearch.nokkhotroelastic.model.model_old.Municipality;
+import com.proshomon.elasticsearch.nokkhotroelastic.model.model_proshomon.Municipalities;
 import com.proshomon.elasticsearch.nokkhotroelastic.repository.MunicipalityRepository;
 import lombok.extern.slf4j.Slf4j;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,10 +30,11 @@ public class MunicipalityTest {
     MunicipalityRepository municipalityRepository;
 
     @Test
+    @Ignore
     public void saveMunicipalityTest(){
         RestTemplate restTemplate = new RestTemplate();
         List<Municipality> municipalityOldList = municipalityRepository.findAll();
-        MunicipalityNew municipalityNew = new MunicipalityNew();
+        Municipalities municipalityNew = new Municipalities();
 
         for (Municipality municipality : municipalityOldList){
             Map<String, Object> map = new HashMap<>(), map2 = new HashMap<>(), map3 = new HashMap<>();
@@ -60,9 +62,9 @@ public class MunicipalityTest {
             municipalityNew.setCode(municipality.getCode().toString());
             municipalityNew.setParentId(responseEntity.getBody().getHits().getHits().get(0).get_id());
 
-            String url1 = this.url + "municipality/municipality/";
-            ResponseEntity<MunicipalityNew> responseEntity1 =
-                    restTemplate.postForEntity(url1, municipalityNew, MunicipalityNew.class);
+            String mUrl = this.url + "municipality/municipality/";
+            ResponseEntity<Municipalities> responseEntity1 =
+                    restTemplate.postForEntity(mUrl, municipalityNew, Municipalities.class);
             log.info("Status: {}", responseEntity1.getStatusCode());
         }
     }

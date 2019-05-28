@@ -1,10 +1,11 @@
 package com.proshomon.elasticsearch.nokkhotroelastic;
 
 import com.proshomon.elasticsearch.nokkhotroelastic.model.ElasticModel.ElasticSearch;
-import com.proshomon.elasticsearch.nokkhotroelastic.model.model_new.DistrictNew;
 import com.proshomon.elasticsearch.nokkhotroelastic.model.model_old.District;
+import com.proshomon.elasticsearch.nokkhotroelastic.model.model_proshomon.Districts;
 import com.proshomon.elasticsearch.nokkhotroelastic.repository.DistrictRepository;
 import lombok.extern.slf4j.Slf4j;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,10 +29,11 @@ public class DistrictTest {
     DistrictRepository districtRepository;
 
     @Test
+    @Ignore
     public void saveDistrictTest(){
         RestTemplate restTemplate = new RestTemplate();
         List<District> districtNewList = districtRepository.findAll();
-        DistrictNew districtNew = new DistrictNew();
+        Districts districts = new Districts();
 
         String url = this.url + "division/division/_search";
 
@@ -40,13 +42,13 @@ public class DistrictTest {
         log.info("Body: {}", responseEntity.getBody());
 
         for (District district : districtNewList){
-            districtNew.setId(district.getId().toString());
-            districtNew.setName(district.getName());
-            districtNew.setCode(district.getCode().toString());
-            districtNew.setParentId(String.valueOf(responseEntity.getBody().getHits().getHits().get(0).get_id()));
+            districts.setId(district.getId().toString());
+            districts.setName(district.getName());
+            districts.setCode(district.getCode().toString());
+            districts.setParentId(String.valueOf(responseEntity.getBody().getHits().getHits().get(0).get_id()));
             String url1 = this.url + "district/district/";
-            ResponseEntity<DistrictNew> responseEntity1 =
-                    restTemplate.postForEntity(url1, districtNew, DistrictNew.class);
+            ResponseEntity<Districts> responseEntity1 =
+                    restTemplate.postForEntity(url1, districts, Districts.class);
             log.info("Status: {}", responseEntity1.getStatusCode());
         }
     }

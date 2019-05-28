@@ -3,6 +3,7 @@ package com.proshomon.elasticsearch.nokkhotroelastic;
 import com.proshomon.elasticsearch.nokkhotroelastic.model.model_old.Household;
 import com.proshomon.elasticsearch.nokkhotroelastic.repository.HouseholdRepository;
 import lombok.extern.slf4j.Slf4j;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +21,7 @@ public class UpdateSmartCardIdTest {
     HouseholdRepository householdRepository;
 
     @Test
+    @Ignore
     public void updateSmartCardIdTest(){
 
         List<Household> householdList =  householdRepository.findAll();
@@ -28,7 +30,6 @@ public class UpdateSmartCardIdTest {
             if(household.getId()<7001){
                 continue;
             }
-
             String smartCardIdFIrst = household.getSmartCardId().substring(0,8);
             String updatedId = household.getSmartCardId().replace(smartCardIdFIrst, "20302950");
 
@@ -39,9 +40,6 @@ public class UpdateSmartCardIdTest {
                 break;
             }
         }
-
-
-
     }
 
 }

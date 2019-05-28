@@ -2,11 +2,12 @@ package com.proshomon.elasticsearch.nokkhotroelastic;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.proshomon.elasticsearch.nokkhotroelastic.model.ElasticModel.ElasticSearch;
-import com.proshomon.elasticsearch.nokkhotroelastic.model.model_new.HouseholdNew;
 import com.proshomon.elasticsearch.nokkhotroelastic.model.model_old.Beneficiary;
+import com.proshomon.elasticsearch.nokkhotroelastic.model.model_proshomon.Households;
 import com.proshomon.elasticsearch.nokkhotroelastic.model.model_proshomon.enums.Relationship;
 import com.proshomon.elasticsearch.nokkhotroelastic.repository.BeneficiaryRepository;
 import lombok.extern.slf4j.Slf4j;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,6 +33,7 @@ public class UpdateHeadBeneficiaryTest {
     BeneficiaryRepository beneficiaryRepository;
 
     @Test
+    @Ignore
     public void updateBeneficiaryIdTest(){
         RestTemplate restTemplate = new RestTemplate();
         List<Beneficiary> beneficiaryListByHHId = null;
@@ -61,7 +63,7 @@ public class UpdateHeadBeneficiaryTest {
                     .exchange(url, HttpMethod.POST, entity, ElasticSearch.class);
             log.info("Body: {}", responseEntity.getBody());
 
-            HouseholdNew aNew = new HouseholdNew();
+            Households aNew = new Households();
             aNew.setId(responseEntity.getBody().getHits().getHits().get(0).get_source().getId());
             aNew.setHeadBeneficiaryId(newBeneIf);
             aNew.setHouseholdName(responseEntity.getBody().getHits().getHits().get(0).get_source().getHouseholdName());
