@@ -1,5 +1,6 @@
 package com.proshomon.elasticsearch.nokkhotroelastic.model.ElasticModel;
 
+import com.proshomon.elasticsearch.nokkhotroelastic.model.model_new.HouseholdBalance;
 import com.proshomon.elasticsearch.nokkhotroelastic.model.model_new.UserNew;
 import lombok.Data;
 import org.elasticsearch.common.geo.GeoPoint;
@@ -18,6 +19,7 @@ public class Source {
     private String householdName;
     private Integer size;
     private String smartCardId;
+    private String cardNo;
     private String divisionId;
     private String districtId;
     private String upazillaId;
@@ -25,6 +27,7 @@ public class Source {
     private String occupation;
     private String municipalityId;
     private String addedByUserId;
+    private HouseholdBalance householdBalance;
     private String phone;
     private GeoPoint geoPoint;
     private UserNew addedBy;
