@@ -2,10 +2,11 @@ package com.proshomon.elasticsearch.nokkhotroelastic;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.proshomon.elasticsearch.nokkhotroelastic.model.ElasticModel.ElasticSearch;
+import com.proshomon.elasticsearch.nokkhotroelastic.model.model_new.Balance;
+import com.proshomon.elasticsearch.nokkhotroelastic.model.model_new.HouseholdBalance;
 import com.proshomon.elasticsearch.nokkhotroelastic.model.model_new.HouseholdNew;
-import com.proshomon.elasticsearch.nokkhotroelastic.model.model_old.Beneficiary;
-import com.proshomon.elasticsearch.nokkhotroelastic.model.model_proshomon.enums.Relationship;
-import com.proshomon.elasticsearch.nokkhotroelastic.repository.BeneficiaryRepository;
+import com.proshomon.elasticsearch.nokkhotroelastic.model.model_old.Household;
+import com.proshomon.elasticsearch.nokkhotroelastic.repository.HouseholdRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -17,6 +18,7 @@ import org.springframework.http.*;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.web.client.RestTemplate;
 
+import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -24,32 +26,21 @@ import java.util.Map;
 @Slf4j
 @SpringBootTest
 @RunWith(SpringRunner.class)
-public class UpdateHeadBeneficiaryTest {
+public class UpdateCardTest {
 
     @Value("${elasticsearch.url}")
     private String url;
     @Autowired
-    BeneficiaryRepository beneficiaryRepository;
+    HouseholdRepository householdRepository;
 
     @Test
-    public void updateBeneficiaryIdTest(){
+    public void updateCard(){
         RestTemplate restTemplate = new RestTemplate();
-        List<Beneficiary> beneficiaryListByHHId = null;
-        String headBeneficiaryId = "";
-        List<Beneficiary> beneficiaryOldList  = beneficiaryRepository.findAll();
-        for (Beneficiary beneficiary : beneficiaryOldList){
-            beneficiaryListByHHId = beneficiaryRepository.findByHHRelationWithHousehold(beneficiary.getHouseholdIds());
-            if (beneficiaryListByHHId.size()!=0){
-                for (Beneficiary beneficiary1 : beneficiaryListByHHId){
-                    if(beneficiary1.getRelationWithHousehold().equals(String.valueOf(Relationship.SELF))){
-                        headBeneficiaryId = beneficiaryListByHHId.get(0).getHouseholdIds();
-                    }
-                }
+        List<Household> householdOldList = householdRepository.findAll();
 
-            }
-            String newBeneIf = headBeneficiaryId;
+        for (Household hh : householdOldList){
             Map<String, Object> map = new HashMap<>(), map2 = new HashMap<>(), map3 = new HashMap<>();
-            map3.put("id", beneficiaryListByHHId.get(0).getHousehold().getId());
+            map3.put("smartCardId", hh.getSmartCardId());
             map2.put("match", map3);
             map.put("query", map2);
             HttpHeaders headers = new HttpHeaders();
@@ -63,38 +54,55 @@ public class UpdateHeadBeneficiaryTest {
 
             HouseholdNew aNew = new HouseholdNew();
             aNew.setId(responseEntity.getBody().getHits().getHits().get(0).get_source().getId());
-            aNew.setHeadBeneficiaryId(newBeneIf);
+            aNew.setHeadBeneficiaryId(responseEntity.getBody().getHits().getHits().get(0).get_source().getHeadBeneficiaryId());
             aNew.setHouseholdName(responseEntity.getBody().getHits().getHits().get(0).get_source().getHouseholdName());
             aNew.setPhone(responseEntity.getBody().getHits().getHits().get(0).get_source().getPhone());
             aNew.setSize(responseEntity.getBody().getHits().getHits().get(0).get_source().getSize());
             aNew.setSmartCardId(responseEntity.getBody().getHits().getHits().get(0).get_source().getSmartCardId());
-            aNew.setCardNo(responseEntity.getBody().getHits().getHits().get(0).get_source().getCardNo());
+            aNew.setCardNo(hh.getCardNo());
             aNew.setDivisionId(responseEntity.getBody().getHits().getHits().get(0).get_source().getDivisionId());
             aNew.setDistrictId(responseEntity.getBody().getHits().getHits().get(0).get_source().getDistrictId());
             aNew.setUpazillaId(responseEntity.getBody().getHits().getHits().get(0).get_source().getUpazillaId());
             aNew.setWardNo(responseEntity.getBody().getHits().getHits().get(0).get_source().getWardNo());
             aNew.setOccupation(responseEntity.getBody().getHits().getHits().get(0).get_source().getOccupation());
             aNew.setMunicipalityId(responseEntity.getBody().getHits().getHits().get(0).get_source().getMunicipalityId());
-            aNew.setHouseholdBalance(responseEntity.getBody().getHits().getHits().get(0).get_source().getHouseholdBalance());
 
-            aNew.setIsActive(Boolean.TRUE);
+            HouseholdBalance hhbalance = new HouseholdBalance();
+            Balance balance = new Balance();
+
+            balance.setPhc(BigDecimal.valueOf(3100.00));
+            balance.setAccident(BigDecimal.valueOf(6300.00));
+            balance.setMaternity(BigDecimal.valueOf(12700.00));
+            hhbalance.setOpeningBalance(balance);
+
+            Balance balance1 = new Balance();
+            balance1.setPhc(BigDecimal.valueOf(3100.00));
+            balance1.setAccident(BigDecimal.valueOf(6300.00));
+            balance1.setMaternity(BigDecimal.valueOf(12700.00));
+            hhbalance.setCurrentBalance(balance1);
+
+            aNew.setHouseholdBalance(hhbalance);
+
+            aNew.setIsActive(true);
             aNew.setCreatedAt(responseEntity.getBody().getHits().getHits().get(0).get_source().getCreatedAt());
             aNew.setUpdatedAt(responseEntity.getBody().getHits().getHits().get(0).get_source().getUpdatedAt());
             aNew.setDeletedAt(responseEntity.getBody().getHits().getHits().get(0).get_source().getDeletedAt());
+
             try {
                 ObjectMapper oMapper = new ObjectMapper();
                 Map<String, Object> maps = oMapper.convertValue(aNew, Map.class);
                 HttpHeaders headerss = new HttpHeaders();
                 headers.setContentType(MediaType.APPLICATION_JSON);
                 HttpEntity<Map> entitys = new HttpEntity<Map>(maps, headerss);
-                String urlForUpdates = this.url + "household/household/"+responseEntity.getBody().getHits().getHits().get(0).get_id()+"?pretty";
+                String urlForUpdatess = this.url + "household/household/"+responseEntity.getBody().getHits().getHits().get(0).get_id()+"?pretty";
                 ResponseEntity<ElasticSearch> responseEntity1 = restTemplate
-                        .exchange(urlForUpdates, HttpMethod.PUT, entitys, ElasticSearch.class);
-                log.info("Body: {}", responseEntity1.getStatusCode());
+                        .exchange(urlForUpdatess, HttpMethod.PUT, entitys, ElasticSearch.class);
+                log.info("Bodys: {}", responseEntity1.getStatusCode());
             }catch (DataAccessException e){
                 log.error(String.valueOf(e));
             }
         }
 
     }
+
 }

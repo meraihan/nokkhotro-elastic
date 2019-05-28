@@ -54,23 +54,21 @@ public class HouseholdTest {
 
             HouseholdBalance hhbalance = new HouseholdBalance();
             Balance balance = new Balance();
-            balance.setPhc(BigDecimal.valueOf(400));
-            balance.setAccident(BigDecimal.valueOf(400));
-            balance.setMaternity(BigDecimal.valueOf(400));
+
+            balance.setPhc(BigDecimal.valueOf(3100.00));
+            balance.setAccident(BigDecimal.valueOf(6300.00));
+            balance.setMaternity(BigDecimal.valueOf(12700.00));
             hhbalance.setOpeningBalance(balance);
 
             Balance balance1 = new Balance();
-            balance1.setPhc(BigDecimal.valueOf(400));
-            balance1.setAccident(BigDecimal.valueOf(400));
-            balance1.setMaternity(BigDecimal.valueOf(400));
+            balance1.setPhc(BigDecimal.valueOf(3100.00));
+            balance1.setAccident(BigDecimal.valueOf(6300.00));
+            balance1.setMaternity(BigDecimal.valueOf(12700.00));
             hhbalance.setCurrentBalance(balance1);
 
             householdNew.setHouseholdBalance(hhbalance);
-
-
             householdNew.setPhone(household.getContactNumber());
-
-            householdNew.setIsActive(Boolean.valueOf(String.valueOf(household.getStatus())));
+            householdNew.setIsActive(Boolean.TRUE);
             householdNew.setCreatedAt(Helper.localDateToDate(household.getCreatedAt()));
 
             String url = this.url + "household/household/";
@@ -78,8 +76,6 @@ public class HouseholdTest {
                     restTemplate.postForEntity(url, householdNew, HouseholdNew.class);
             log.info("Status: {}", responseEntity.getStatusCode());
         }
-
-
     }
 
 
