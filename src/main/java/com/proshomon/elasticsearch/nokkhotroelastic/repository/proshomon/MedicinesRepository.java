@@ -1,5 +1,6 @@
 package com.proshomon.elasticsearch.nokkhotroelastic.repository.proshomon;
 
+import com.proshomon.elasticsearch.nokkhotroelastic.model.model_old.rowmapper.MedicineRowMapper;
 import com.proshomon.elasticsearch.nokkhotroelastic.model.model_proshomon.Medicines;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,7 @@ import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 import org.springframework.stereotype.Repository;
 
 import java.util.HashMap;
+import java.util.List;
 
 @Slf4j
 @Repository
@@ -39,6 +41,16 @@ public class MedicinesRepository {
             } else {
                 return medicines;
             }
+        } catch (DataAccessException dae) {
+            log.error(dae.getMessage());
+            return null;
+        }
+    }
+
+    public List<Medicines> findAll() {
+        String query = "select * from medicines";
+        try {
+            return jdbcTemplate.query(query, new MedicineRowMapper());
         } catch (DataAccessException dae) {
             log.error(dae.getMessage());
             return null;
