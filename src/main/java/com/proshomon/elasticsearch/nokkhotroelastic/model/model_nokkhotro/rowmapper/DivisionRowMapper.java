@@ -1,7 +1,7 @@
-package com.proshomon.elasticsearch.nokkhotroelastic.model.model_old.rowmapper;
+package com.proshomon.elasticsearch.nokkhotroelastic.model.model_nokkhotro.rowmapper;
 
 
-import com.proshomon.elasticsearch.nokkhotroelastic.model.model_old.Division;
+import com.proshomon.elasticsearch.nokkhotroelastic.model.model_nokkhotro.Division;
 import org.springframework.jdbc.core.RowMapper;
 
 import java.sql.ResultSet;

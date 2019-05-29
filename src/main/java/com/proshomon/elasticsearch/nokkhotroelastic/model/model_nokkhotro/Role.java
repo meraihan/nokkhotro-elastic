@@ -1,4 +1,4 @@
-package com.proshomon.elasticsearch.nokkhotroelastic.model.model_old;
+package com.proshomon.elasticsearch.nokkhotroelastic.model.model_nokkhotro;
 
 import lombok.Data;
 

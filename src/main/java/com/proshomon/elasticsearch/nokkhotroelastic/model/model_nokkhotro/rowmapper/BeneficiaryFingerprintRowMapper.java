@@ -1,8 +1,8 @@
-package com.proshomon.elasticsearch.nokkhotroelastic.model.model_old.rowmapper;
+package com.proshomon.elasticsearch.nokkhotroelastic.model.model_nokkhotro.rowmapper;
 
 
-import com.proshomon.elasticsearch.nokkhotroelastic.model.model_old.Beneficiary;
-import com.proshomon.elasticsearch.nokkhotroelastic.model.model_old.BeneficiaryFingerprint;
+import com.proshomon.elasticsearch.nokkhotroelastic.model.model_nokkhotro.Beneficiary;
+import com.proshomon.elasticsearch.nokkhotroelastic.model.model_nokkhotro.BeneficiaryFingerprint;
 import com.proshomon.elasticsearch.nokkhotroelastic.utils.Helper;
 import org.springframework.jdbc.core.RowMapper;
 

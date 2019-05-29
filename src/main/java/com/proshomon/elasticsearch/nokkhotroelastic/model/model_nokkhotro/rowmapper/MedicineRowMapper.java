@@ -1,4 +1,4 @@
-package com.proshomon.elasticsearch.nokkhotroelastic.model.model_old.rowmapper;
+package com.proshomon.elasticsearch.nokkhotroelastic.model.model_nokkhotro.rowmapper;
 
 import com.proshomon.elasticsearch.nokkhotroelastic.model.model_proshomon.Medicines;
 import org.springframework.jdbc.core.RowMapper;
