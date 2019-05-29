@@ -1,6 +1,6 @@
 package com.proshomon.elasticsearch.nokkhotroelastic.proshomon;
 
-import com.proshomon.elasticsearch.nokkhotroelastic.model.model_proshomon.Transaction;
+import com.proshomon.elasticsearch.nokkhotroelastic.model.proshomon.Transaction;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Ignore;
 import org.junit.Test;

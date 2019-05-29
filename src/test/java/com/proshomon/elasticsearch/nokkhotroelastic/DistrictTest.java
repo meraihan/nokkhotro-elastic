@@ -1,11 +1,10 @@
 package com.proshomon.elasticsearch.nokkhotroelastic;
 
 import com.proshomon.elasticsearch.nokkhotroelastic.model.elasticsearch.ElasticSearch;
-import com.proshomon.elasticsearch.nokkhotroelastic.model.model_nokkhotro.District;
-import com.proshomon.elasticsearch.nokkhotroelastic.model.model_proshomon.Districts;
+import com.proshomon.elasticsearch.nokkhotroelastic.model.nokkhotro.District;
+import com.proshomon.elasticsearch.nokkhotroelastic.model.proshomon.Districts;
 import com.proshomon.elasticsearch.nokkhotroelastic.repository.DistrictRepository;
 import lombok.extern.slf4j.Slf4j;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,7 +28,7 @@ public class DistrictTest {
     DistrictRepository districtRepository;
 
     @Test
-    @Ignore
+//    @Ignore
     public void saveDistrictTest(){
         RestTemplate restTemplate = new RestTemplate();
         List<District> districtNewList = districtRepository.findAll();

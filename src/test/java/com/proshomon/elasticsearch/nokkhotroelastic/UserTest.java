@@ -1,6 +1,6 @@
 package com.proshomon.elasticsearch.nokkhotroelastic;
 
-import com.proshomon.elasticsearch.nokkhotroelastic.model.model_proshomon.Users;
+import com.proshomon.elasticsearch.nokkhotroelastic.model.proshomon.Users;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;

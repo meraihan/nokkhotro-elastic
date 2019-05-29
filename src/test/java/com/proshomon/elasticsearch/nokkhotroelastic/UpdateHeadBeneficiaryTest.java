@@ -2,9 +2,9 @@ package com.proshomon.elasticsearch.nokkhotroelastic;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.proshomon.elasticsearch.nokkhotroelastic.model.elasticsearch.ElasticSearch;
-import com.proshomon.elasticsearch.nokkhotroelastic.model.model_nokkhotro.Beneficiary;
-import com.proshomon.elasticsearch.nokkhotroelastic.model.model_proshomon.Households;
-import com.proshomon.elasticsearch.nokkhotroelastic.model.model_proshomon.enums.Relationship;
+import com.proshomon.elasticsearch.nokkhotroelastic.model.nokkhotro.Beneficiary;
+import com.proshomon.elasticsearch.nokkhotroelastic.model.proshomon.Households;
+import com.proshomon.elasticsearch.nokkhotroelastic.model.proshomon.enums.Relationship;
 import com.proshomon.elasticsearch.nokkhotroelastic.repository.BeneficiaryRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Ignore;

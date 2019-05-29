@@ -1,6 +1,6 @@
 package com.proshomon.elasticsearch.nokkhotroelastic.proshomon;
 
-import com.proshomon.elasticsearch.nokkhotroelastic.model.model_proshomon.*;
+import com.proshomon.elasticsearch.nokkhotroelastic.model.proshomon.*;
 import com.proshomon.elasticsearch.nokkhotroelastic.repository.proshomon.DiagnosticCenterRepository;
 import com.proshomon.elasticsearch.nokkhotroelastic.repository.proshomon.HospitalRepository;
 import com.proshomon.elasticsearch.nokkhotroelastic.repository.proshomon.ServiceProviderRepository;

@@ -1,6 +1,6 @@
 package com.proshomon.elasticsearch.nokkhotroelastic.proshomon;
 
-import com.proshomon.elasticsearch.nokkhotroelastic.model.model_proshomon.Medicines;
+import com.proshomon.elasticsearch.nokkhotroelastic.model.proshomon.Medicines;
 import com.proshomon.elasticsearch.nokkhotroelastic.repository.proshomon.MedicinesRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.poi.ss.usermodel.Row;

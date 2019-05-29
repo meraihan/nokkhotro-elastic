@@ -1,11 +1,11 @@
 package com.proshomon.elasticsearch.nokkhotroelastic;
 
 import com.proshomon.elasticsearch.nokkhotroelastic.model.elasticsearch.ElasticSearch;
-import com.proshomon.elasticsearch.nokkhotroelastic.model.model_proshomon.enums.*;
-import com.proshomon.elasticsearch.nokkhotroelastic.model.model_nokkhotro.Beneficiary;
-import com.proshomon.elasticsearch.nokkhotroelastic.model.model_proshomon.Beneficiaries;
-import com.proshomon.elasticsearch.nokkhotroelastic.model.model_proshomon.Fingerprint;
-import com.proshomon.elasticsearch.nokkhotroelastic.model.model_proshomon.Image;
+import com.proshomon.elasticsearch.nokkhotroelastic.model.proshomon.enums.*;
+import com.proshomon.elasticsearch.nokkhotroelastic.model.nokkhotro.Beneficiary;
+import com.proshomon.elasticsearch.nokkhotroelastic.model.proshomon.Beneficiaries;
+import com.proshomon.elasticsearch.nokkhotroelastic.model.proshomon.Fingerprint;
+import com.proshomon.elasticsearch.nokkhotroelastic.model.proshomon.Image;
 import com.proshomon.elasticsearch.nokkhotroelastic.repository.BeneficiaryRepository;
 import com.proshomon.elasticsearch.nokkhotroelastic.utils.Helper;
 import lombok.extern.slf4j.Slf4j;

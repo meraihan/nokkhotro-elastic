@@ -1,6 +1,6 @@
 package com.proshomon.elasticsearch.nokkhotroelastic.proshomon;
 
-import com.proshomon.elasticsearch.nokkhotroelastic.model.model_proshomon.DiagnosticTestRecord;
+import com.proshomon.elasticsearch.nokkhotroelastic.model.proshomon.DiagnosticTestRecord;
 import com.proshomon.elasticsearch.nokkhotroelastic.repository.proshomon.DiagnosticTestRecordRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Ignore;
