@@ -1,8 +1,8 @@
 package com.proshomon.elasticsearch.nokkhotroelastic;
 
-import com.proshomon.elasticsearch.nokkhotroelastic.model.ElasticModel.ElasticSearch;
+import com.proshomon.elasticsearch.nokkhotroelastic.model.elasticsearch.ElasticSearch;
 import com.proshomon.elasticsearch.nokkhotroelastic.model.model_proshomon.enums.*;
-import com.proshomon.elasticsearch.nokkhotroelastic.model.model_old.Beneficiary;
+import com.proshomon.elasticsearch.nokkhotroelastic.model.model_nokkhotro.Beneficiary;
 import com.proshomon.elasticsearch.nokkhotroelastic.model.model_proshomon.Beneficiaries;
 import com.proshomon.elasticsearch.nokkhotroelastic.model.model_proshomon.Fingerprint;
 import com.proshomon.elasticsearch.nokkhotroelastic.model.model_proshomon.Image;

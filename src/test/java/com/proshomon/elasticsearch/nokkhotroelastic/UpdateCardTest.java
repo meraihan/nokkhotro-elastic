@@ -1,8 +1,8 @@
 package com.proshomon.elasticsearch.nokkhotroelastic;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.proshomon.elasticsearch.nokkhotroelastic.model.ElasticModel.ElasticSearch;
-import com.proshomon.elasticsearch.nokkhotroelastic.model.model_old.Household;
+import com.proshomon.elasticsearch.nokkhotroelastic.model.elasticsearch.ElasticSearch;
+import com.proshomon.elasticsearch.nokkhotroelastic.model.model_nokkhotro.Household;
 import com.proshomon.elasticsearch.nokkhotroelastic.model.model_proshomon.Balance;
 import com.proshomon.elasticsearch.nokkhotroelastic.model.model_proshomon.HouseholdBalance;
 import com.proshomon.elasticsearch.nokkhotroelastic.model.model_proshomon.Households;

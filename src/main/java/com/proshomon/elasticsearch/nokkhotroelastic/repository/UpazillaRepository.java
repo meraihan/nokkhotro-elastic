@@ -1,7 +1,7 @@
 package com.proshomon.elasticsearch.nokkhotroelastic.repository;
 
-import com.proshomon.elasticsearch.nokkhotroelastic.model.model_old.Upazilla;
-import com.proshomon.elasticsearch.nokkhotroelastic.model.model_old.rowmapper.UpazillaRowMapper;
+import com.proshomon.elasticsearch.nokkhotroelastic.model.model_nokkhotro.Upazilla;
+import com.proshomon.elasticsearch.nokkhotroelastic.model.model_nokkhotro.rowmapper.UpazillaRowMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;

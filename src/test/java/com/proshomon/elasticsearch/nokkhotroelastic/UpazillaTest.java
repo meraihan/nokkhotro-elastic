@@ -1,7 +1,7 @@
 package com.proshomon.elasticsearch.nokkhotroelastic;
 
-import com.proshomon.elasticsearch.nokkhotroelastic.model.ElasticModel.ElasticSearch;
-import com.proshomon.elasticsearch.nokkhotroelastic.model.model_old.Upazilla;
+import com.proshomon.elasticsearch.nokkhotroelastic.model.elasticsearch.ElasticSearch;
+import com.proshomon.elasticsearch.nokkhotroelastic.model.model_nokkhotro.Upazilla;
 import com.proshomon.elasticsearch.nokkhotroelastic.model.model_proshomon.Upazillas;
 import com.proshomon.elasticsearch.nokkhotroelastic.repository.UpazillaRepository;
 import lombok.extern.slf4j.Slf4j;

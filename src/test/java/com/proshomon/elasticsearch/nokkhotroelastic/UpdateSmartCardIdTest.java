@@ -1,6 +1,6 @@
 package com.proshomon.elasticsearch.nokkhotroelastic;
 
-import com.proshomon.elasticsearch.nokkhotroelastic.model.model_old.Household;
+import com.proshomon.elasticsearch.nokkhotroelastic.model.model_nokkhotro.Household;
 import com.proshomon.elasticsearch.nokkhotroelastic.repository.HouseholdRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Ignore;

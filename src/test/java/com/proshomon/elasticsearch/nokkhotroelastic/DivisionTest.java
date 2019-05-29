@@ -1,6 +1,6 @@
 package com.proshomon.elasticsearch.nokkhotroelastic;
 
-import com.proshomon.elasticsearch.nokkhotroelastic.model.model_old.Division;
+import com.proshomon.elasticsearch.nokkhotroelastic.model.model_nokkhotro.Division;
 import com.proshomon.elasticsearch.nokkhotroelastic.model.model_proshomon.Divisions;
 import com.proshomon.elasticsearch.nokkhotroelastic.repository.DivisionRepository;
 import lombok.extern.slf4j.Slf4j;

@@ -1,7 +1,7 @@
 package com.proshomon.elasticsearch.nokkhotroelastic.repository;
 
-import com.proshomon.elasticsearch.nokkhotroelastic.model.model_old.Household;
-import com.proshomon.elasticsearch.nokkhotroelastic.model.model_old.rowmapper.HouseholdRowMapper;
+import com.proshomon.elasticsearch.nokkhotroelastic.model.model_nokkhotro.Household;
+import com.proshomon.elasticsearch.nokkhotroelastic.model.model_nokkhotro.rowmapper.HouseholdRowMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
