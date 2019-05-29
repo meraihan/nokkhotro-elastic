@@ -1,7 +1,7 @@
 package com.proshomon.elasticsearch.nokkhotroelastic.repository.proshomon;
 
-import com.proshomon.elasticsearch.nokkhotroelastic.model.model_nokkhotro.rowmapper.MedicineRowMapper;
-import com.proshomon.elasticsearch.nokkhotroelastic.model.model_proshomon.Medicines;
+import com.proshomon.elasticsearch.nokkhotroelastic.model.nokkhotro.rowmapper.MedicineRowMapper;
+import com.proshomon.elasticsearch.nokkhotroelastic.model.proshomon.Medicines;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;

@@ -1,9 +1,9 @@
 package com.proshomon.elasticsearch.nokkhotroelastic.repository.proshomon;
 
-import com.proshomon.elasticsearch.nokkhotroelastic.model.model_proshomon.DiagnosticCenter;
-import com.proshomon.elasticsearch.nokkhotroelastic.model.model_proshomon.DiagnosticTests;
-import com.proshomon.elasticsearch.nokkhotroelastic.model.model_proshomon.rowmapper.DiagnosisCenterInfoRowMapper;
-import com.proshomon.elasticsearch.nokkhotroelastic.model.model_proshomon.rowmapper.DiagnosticTestServiceRowMapper;
+import com.proshomon.elasticsearch.nokkhotroelastic.model.proshomon.DiagnosticCenter;
+import com.proshomon.elasticsearch.nokkhotroelastic.model.proshomon.DiagnosticTests;
+import com.proshomon.elasticsearch.nokkhotroelastic.model.proshomon.rowmapper.DiagnosisCenterInfoRowMapper;
+import com.proshomon.elasticsearch.nokkhotroelastic.model.proshomon.rowmapper.DiagnosticTestServiceRowMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;

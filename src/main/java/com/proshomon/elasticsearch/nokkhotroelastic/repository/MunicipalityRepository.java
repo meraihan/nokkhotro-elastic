@@ -1,7 +1,7 @@
 package com.proshomon.elasticsearch.nokkhotroelastic.repository;
 
-import com.proshomon.elasticsearch.nokkhotroelastic.model.model_nokkhotro.Municipality;
-import com.proshomon.elasticsearch.nokkhotroelastic.model.model_nokkhotro.rowmapper.MunicipalityRowMapper;
+import com.proshomon.elasticsearch.nokkhotroelastic.model.nokkhotro.Municipality;
+import com.proshomon.elasticsearch.nokkhotroelastic.model.nokkhotro.rowmapper.MunicipalityRowMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;

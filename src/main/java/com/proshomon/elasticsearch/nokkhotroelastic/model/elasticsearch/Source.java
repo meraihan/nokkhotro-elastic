@@ -1,7 +1,7 @@
 package com.proshomon.elasticsearch.nokkhotroelastic.model.elasticsearch;
 
-import com.proshomon.elasticsearch.nokkhotroelastic.model.model_proshomon.HouseholdBalance;
-import com.proshomon.elasticsearch.nokkhotroelastic.model.model_proshomon.Users;
+import com.proshomon.elasticsearch.nokkhotroelastic.model.proshomon.HouseholdBalance;
+import com.proshomon.elasticsearch.nokkhotroelastic.model.proshomon.Users;
 import lombok.Data;
 import org.elasticsearch.common.geo.GeoPoint;
 
