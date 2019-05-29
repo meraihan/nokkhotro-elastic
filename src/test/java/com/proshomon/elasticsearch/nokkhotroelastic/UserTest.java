@@ -2,7 +2,6 @@ package com.proshomon.elasticsearch.nokkhotroelastic;
 
 import com.proshomon.elasticsearch.nokkhotroelastic.model.model_proshomon.Users;
 import lombok.extern.slf4j.Slf4j;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Value;
@@ -28,23 +27,23 @@ public class UserTest {
     PasswordEncoder encoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
 
     @Test
-    @Ignore
+//    @Ignore
     public void saveUserTest(){
         RestTemplate restTemplate = new RestTemplate();
         Users user = new Users();
         user.setId(null);
-        user.setUsername("concernbd");
-        user.setPassword(encoder.encode("concernbd"));
-        user.setFirstName("concernbd");
-        user.setLastName("concernbd");
-        user.setPhone("01722680415");
-        user.setEmail("concernbd@gmail.com");
-        user.setServiceProviderId("");
-        user.setIsServiceProvider(false);
+        user.setUsername("testfenihospital");
+        user.setPassword(encoder.encode("testfenihospital"));
+        user.setFirstName("testfenihospital");
+        user.setLastName("testfenihospital");
+        user.setPhone("01990682310");
+        user.setEmail("testfenihospital@gmail.com");
+        user.setServiceProviderId("pLmx_WoBt92Pyc6X7eg-");
+        user.setIsServiceProvider(true);
         user.setIsEnabled(true);
         user.setIsActive(true);
         Set<String> roles = new HashSet<>();
-        roles.add("ROLE_ADMIN");
+        roles.add("ROLE_HOSPITAL");
         user.setRoles(roles);
         user.setDateOfBirth(new Date());
         user.setCreatedAt(new Date());
