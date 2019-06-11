@@ -47,7 +47,6 @@ public class UpdateHeadBeneficiaryTest {
                         headBeneficiaryId = beneficiaryListByHHId.get(0).getHouseholdIds();
                     }
                 }
-
             }
             String newBeneIf = headBeneficiaryId;
             Map<String, Object> map = new HashMap<>(), map2 = new HashMap<>(), map3 = new HashMap<>();
